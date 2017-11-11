@@ -3,6 +3,11 @@
 console, newGame, playerPick, prompt, getComputerPick, playerPickElem, computerPickElem, checkRoundWinner, setGamePoints,checkGameWinner
 */
 /*jslint plusplus: true */
+/*jslint maxerr: 2, node: */
+
+
+
+
 var newGameBtn = document.getElementById('js-newGameButton');
 
 newGameBtn.addEventListener('click', newGame);
@@ -41,10 +46,10 @@ function setGameElements() {'use strict'; switch (gameState) { case 'started':
             newGameElem.style.display = 'none';
             pickElem.style.display = 'block';
             resultsElem.style.display = 'block';
-           break;
+        break;
         case 'ended':
             newGameBtn.innerHTML = 'Try again';
-           //break;
+        /* FALLTHROUGH */
         case 'notStarted':
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
@@ -53,6 +58,10 @@ function setGameElements() {'use strict'; switch (gameState) { case 'started':
 
 setGameElements();
 
+        
+        
+        
+        
 var playerPointsElem = document.getElementById('js-playerPoints'),
     playerNameElem = document.getElementById('js-playerName'),
     computerPointsElem = document.getElementById('js-computerPoints');
@@ -80,7 +89,7 @@ var playerPickElem = document.getElementById('js-playerPick'),
     computerPickElem = document.getElementById('js-computerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
-// zdefiniowana !!
+//już zdefiniowana !!
 function playerPick(playerPick) { 'use strict';
     var computerPick = getComputerPick();
     playerPickElem.innerHTML = playerPick;
