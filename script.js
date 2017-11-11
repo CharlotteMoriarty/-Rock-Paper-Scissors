@@ -1,6 +1,6 @@
 /*jslint devel: true*/
 /*global
-console, newGame, playerPick, prompt, getComputerPick, playerPickElem, computerPickElem, checkRoundWinner, setGamePoints
+console, newGame, playerPick, prompt, getComputerPick, playerPickElem, computerPickElem, checkRoundWinner, setGamePoints,checkGameWinner
 */
 /*jslint plusplus: true */
 var newGameBtn = document.getElementById('js-newGameButton');
@@ -41,10 +41,10 @@ function setGameElements() {'use strict'; switch (gameState) { case 'started':
             newGameElem.style.display = 'none';
             pickElem.style.display = 'block';
             resultsElem.style.display = 'block';
-            break;
+           break;
         case 'ended':
             newGameBtn.innerHTML = 'Try again';
-            break;
+           //break;
         case 'notStarted':
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
@@ -80,12 +80,13 @@ var playerPickElem = document.getElementById('js-playerPick'),
     computerPickElem = document.getElementById('js-computerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
-//gdzieś zdefiniowana !!
+// zdefiniowana !!
 function playerPick(playerPick) { 'use strict';
     var computerPick = getComputerPick();
     playerPickElem.innerHTML = playerPick;
     computerPickElem.innerHTML = computerPick;
-    checkRoundWinner(playerPick, computerPick); }
+    checkRoundWinner(playerPick, computerPick);
+    checkGameWinner(); }
 
 function checkRoundWinner(playerPick, computerPick) {
     'use strict';
@@ -96,21 +97,22 @@ function checkRoundWinner(playerPick, computerPick) {
     if (playerPick === computerPick) {
         winnerIs = 'none';
     } else if ((computerPick === 'rock' &&  playerPick === 'scissors') || (computerPick === 'scissors' &&  playerPick === 'paper') || (computerPick === 'paper' &&  playerPick === 'rock')) {
-
         winnerIs = 'computer';
     }
-
     if (winnerIs === 'player') {
         playerResultElem.innerHTML = "Win!";
         player.score++;
-    } else if (winnerIs === 'computer') {
-        computerResultElem.innerHTML = "Win!";
-        computer.score++;
-    }
-
+    } else if (winnerIs === 'computer') {computerResultElem.innerHTML = "Win!"; computer.score++; }
+    setGamePoints();
 }
 function setGamePoints() {
     'use strict';
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
+function checkGameWinner() {'use strict';
+    if (player.score >= 10) {
+        alert('You won !!!');
+        gameState = 'ended';
+    } else if (computer.score >= 10) { alert('You should try again'); gameState = 'ended'; }
+    setGameElements(); }
