@@ -117,9 +117,24 @@ function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
-function checkGameWinner() {'use strict';
+function checkGameWinner() {; 'use strict';
     if (player.score === 10) {
-        alert('You won !!!');
+        //return player.name
         gameState = 'ended';
-    } else if (computer.score === 10) { alert('You should try again'); gameState = 'ended'; }
-    setGameElements(); }
+        player.score = computer.score = 0;
+        playerPointsElem.innerHTML = player.score;
+        computerPointsElem.innerHTML = computer.score;
+        computerResultElem.innerHTML = '';
+        playerResultElem.innerHTML = '';
+        setGamePoints();
+    } else if (computer.score === 10) { //alert('You should try again'); 
+       //return computer
+        gameState = 'ended';                           
+        player.score = computer.score = 0;
+        playerPointsElem.innerHTML = player.score;
+        computerPointsElem.innerHTML = computer.score;
+        computerResultElem.innerHTML = '';
+        playerResultElem.innerHTML = '';                           
+        setGamePoints(); }
+        setGameElements(); }
+                       
