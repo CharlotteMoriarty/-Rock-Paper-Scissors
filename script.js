@@ -3,9 +3,7 @@
 console, newGame, playerPick, prompt, getComputerPick, playerPickElem, computerPickElem, checkRoundWinner, setGamePoints,checkGameWinner
 */
 /*jslint plusplus: true */
-/*jslint maxerr: 2, node: */
-
-
+/*jslint maxerr:2, node:  */
 
 
 var newGameBtn = document.getElementById('js-newGameButton');
@@ -54,7 +52,7 @@ function setGameElements() {'use strict'; switch (gameState) { case 'started':
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
             resultsElem.style.display = 'none';
-            break; } }
+           break; } }
 
 setGameElements();
 
@@ -120,8 +118,8 @@ function setGamePoints() {
     computerPointsElem.innerHTML = computer.score;
 }
 function checkGameWinner() {'use strict';
-    if (player.score >= 10) {
+    if (player.score === 10) {
         alert('You won !!!');
         gameState = 'ended';
-    } else if (computer.score >= 10) { alert('You should try again'); gameState = 'ended'; }
+    } else if (computer.score === 10) { alert('You should try again'); gameState = 'ended'; }
     setGameElements(); }
