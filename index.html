@@ -1,7 +1,5 @@
 <!DOCTYPE HTML>
 <!--założenia gry:
-
-
 Gra ma się składać z dowolnej liczby rund. Koniec rozgrywki następuje, gdy jeden z zawodników zdobędzie 10 punktów. Remis nie daje punktów, a wygrana daje 1 punkt dla zwycięzcy danej rundy.
 Tuż po uruchomieniu strony gracz ma zobaczyć tytuł gry oraz przycisk 'New Game'.
 Po kliknięciu przycisku 'New Game', użytkownik zostanie poproszony o podanie swojego imienia.
@@ -11,11 +9,14 @@ Po zdobyciu przez któregoś gracza 10 punktów zamiast przycisków 'Rock', 'Pap
 -->
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i&amp;subset=latin-ext" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  
     <div class="container">
         <h3 class="text-center">
             Let's play the game<br>
@@ -26,7 +27,7 @@ Po zdobyciu przez któregoś gracza 10 punktów zamiast przycisków 'Rock', 'Pap
     </div>
     <div id="js-newGameElement" class="container">
         <div class="row text-center">
-            <button  id="js-newGameButton" class="btn btn-default">
+            <button  id="js-newGameButton" class="btn btn-default game-button">
                 New game
             </button>
         </div>
@@ -100,6 +101,7 @@ Po zdobyciu przez któregoś gracza 10 punktów zamiast przycisków 'Rock', 'Pap
             </div>
         </div>
     </div>
+       
     <script type="text/javascript" src="script.js"></script> 
 </body>
 </html>
