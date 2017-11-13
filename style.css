@@ -1,18 +1,18 @@
 //body, container do zmiany przy implementacji 
-body {
-    font-size: 20px;
-}
 .container{
     padding-bottom: 15px;
     padding-top: 20px;
 }
 .text-center {
-    font-size: 50px;
+    font-size: 35px;
 }
 .game-button {
-   font-size: 35px; 
+   font-size: 25px; 
 }
 .badge {
-    font-size: 35px;
+    font-size: 30px;
     border-radius: 25%;
+}
+.btn {
+    border-radius: 4px;
 }
