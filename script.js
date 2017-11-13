@@ -3,29 +3,25 @@
 console, newGame, playerPick, prompt, getComputerPick, playerPickElem, computerPickElem, checkRoundWinner, setGamePoints,checkGameWinner
 */
 /*jslint plusplus: true */
-/*jslint maxerr:2, node:  */
+
 
 
 var newGameBtn = document.getElementById('js-newGameButton');
-
 newGameBtn.addEventListener('click', newGame);
 
 var pickRock = document.getElementById('js-playerPick_rock'),
     pickPaper = document.getElementById('js-playerPick_paper'),
     pickScissors = document.getElementById('js-playerPick_scissors');
 
-pickRock.addEventListener('click', function () { 'use strict'; playerPick('rock');
-                                       /* var computerPick = getComputerPick();
-                                            playerPickElem.innerHTML = playerPick;
-                                            computerPickElem.innerHTML = computerPick;    */   });
-pickPaper.addEventListener('click', function () { 'use strict'; playerPick('paper');
-                                       /* var computerPick = getComputerPick();
-                                                 playerPickElem.innerHTML = playerPick;
-                                                 computerPickElem.innerHTML = computerPick;   */     });
-pickScissors.addEventListener('click', function () { 'use strict'; playerPick('scissors');
-                                       /* var computerPick = getComputerPick();
-                                                    playerPickElem.innerHTML = playerPick;
-                                                    computerPickElem.innerHTML = computerPick; */ });
+pickRock.addEventListener('click', function() {
+    playerPick('rock')
+});
+pickPaper.addEventListener('click', function() {
+    playerPick('paper')
+});
+pickScissors.addEventListener('click', function() {
+    playerPick('scissors')
+});
 
 var gameState = 'notStarted',
     player = {
@@ -36,36 +32,34 @@ var gameState = 'notStarted',
         score: 0
     };
 
+
 var newGameElem = document.getElementById('js-newGameElement'),
     pickElem = document.getElementById('js-playerPickElement'),
     resultsElem = document.getElementById('js-resultsTableElement');
 
-function setGameElements() {'use strict'; switch (gameState) { case 'started':
+function setGameElements() {
+    switch(gameState) {
+        case 'started':
             newGameElem.style.display = 'none';
             pickElem.style.display = 'block';
             resultsElem.style.display = 'block';
-        break;
+            break;
         case 'ended':
-            newGameBtn.innerHTML = 'Try again';
-        /* FALLTHROUGH */
+            newGameBtn.innerText = 'Try again';
         case 'notStarted':
+        default:
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
             resultsElem.style.display = 'none';
-           break; } }
-
+                    }
+}
 setGameElements();
-
-        
-        
-        
-        
+       
 var playerPointsElem = document.getElementById('js-playerPoints'),
     playerNameElem = document.getElementById('js-playerName'),
     computerPointsElem = document.getElementById('js-computerPoints');
 
 function newGame() {
-    'use strict';
     player.name = prompt('Please enter your name', 'Player name');
     if (player.name) {
         player.score = computer.score = 0;
@@ -75,11 +69,10 @@ function newGame() {
     }
 }
 
-var x = Math.random();
-Math.floor(Math.random() * 3);
+/*var x = Math.random();
+Math.floor(Math.random() * 3);*/
 
 function getComputerPick() {
-    'use strict';
     var possiblePick = ['rock', 'paper', 'scissors'];
     return possiblePick[Math.floor(Math.random() * 3)];
 }
@@ -87,54 +80,66 @@ var playerPickElem = document.getElementById('js-playerPick'),
     computerPickElem = document.getElementById('js-computerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
+
 //już zdefiniowana !!
-function playerPick(playerPick) { 'use strict';
+
+function playerPick(playerPick) {
+    
     var computerPick = getComputerPick();
+    
     playerPickElem.innerHTML = playerPick;
     computerPickElem.innerHTML = computerPick;
+    
     checkRoundWinner(playerPick, computerPick);
-    checkGameWinner(); }
-
+   //checkGameWinner(); //potrzebne mi to tu?
+}
+//funnkcja : ocena wygranej gracz vs komputer 
 function checkRoundWinner(playerPick, computerPick) {
-    'use strict';
     playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
     var winnerIs = 'player';
 
-    if (playerPick === computerPick) {
-        winnerIs = 'none';
-    } else if ((computerPick === 'rock' &&  playerPick === 'scissors') || (computerPick === 'scissors' &&  playerPick === 'paper') || (computerPick === 'paper' &&  playerPick === 'rock')) {
+    if (playerPick == computerPick) {
+        winnerIs = 'noone'; // remis
+    } else if (
+        (computerPick == 'rock' &&  playerPick == 'scissors') ||
+        (computerPick == 'scissors' &&  playerPick == 'paper') ||
+        (computerPick == 'paper' &&  playerPick == 'rock')) {
+
         winnerIs = 'computer';
     }
-    if (winnerIs === 'player') {
+
+    if (winnerIs == 'player') {
         playerResultElem.innerHTML = "Win!";
         player.score++;
-    } else if (winnerIs === 'computer') {computerResultElem.innerHTML = "Win!"; computer.score++; }
+    } else if (winnerIs == 'computer') {
+        computerResultElem.innerHTML = "Win!";
+        computer.score++;
+    }
     setGamePoints();
+
 }
+
+//ustawienie punktacji :
 function setGamePoints() {
-    'use strict';
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
+    setTimeout(checkGameWinner, 0); 
 }
-function checkGameWinner() {; 'use strict';
-    if (player.score === 10) {
-        //return player.name
+//kto wygrał?
+function checkGameWinner () {
+    if(player.score == 10) {
+        //komentarz
+     
+       gameState = 'ended';
+        setGameElements();
+        alert('jak dorosnę będę komentarzem');
+    } else if (computer.score == 10) {
+        //komentarzem
         gameState = 'ended';
-        player.score = computer.score = 0;
-        playerPointsElem.innerHTML = player.score;
-        computerPointsElem.innerHTML = computer.score;
-        computerResultElem.innerHTML = '';
-        playerResultElem.innerHTML = '';
-        setGamePoints();
-    } else if (computer.score === 10) { //alert('You should try again'); 
-       //return computer
-        gameState = 'ended';                           
-        player.score = computer.score = 0;
-        playerPointsElem.innerHTML = player.score;
-        computerPointsElem.innerHTML = computer.score;
-        computerResultElem.innerHTML = '';
-        playerResultElem.innerHTML = '';                           
-        setGamePoints(); }
-        setGameElements(); }
-                       
+        alert('jak dorosnę będę komentarzem');
+    }
+}
+                        
+
+
