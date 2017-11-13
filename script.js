@@ -132,13 +132,14 @@ function checkGameWinner () {
         //komentarz
      
        gameState = 'ended';
-        setGameElements();
+        
         alert('jak dorosnę będę komentarzem');
     } else if (computer.score == 10) {
         //komentarzem
         gameState = 'ended';
+        
         alert('jak dorosnę będę komentarzem');
-    }
+    } setGameElements();
 }
                         
 
