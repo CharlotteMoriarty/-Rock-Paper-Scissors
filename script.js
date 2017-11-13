@@ -130,14 +130,15 @@ function setGamePoints() {
 function checkGameWinner () {
     if(player.score == 10) {
         //komentarz
-     
        gameState = 'ended';
-        
+        computerResultElem.innerHTML = '';
+        playerResultElem.innerHTML = '';
         alert('jak dorosnę będę komentarzem');
     } else if (computer.score == 10) {
-        //komentarzem
+        //komentarz
         gameState = 'ended';
-        
+        computerResultElem.innerHTML = '';
+        playerResultElem.innerHTML = '';
         alert('jak dorosnę będę komentarzem');
     } setGameElements();
 }
