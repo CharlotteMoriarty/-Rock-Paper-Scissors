@@ -137,14 +137,14 @@ function setGamePoints() {
 }
 //kto wygrał?
 function checkGameWinner() {
-    if (player.score == 3) {
+    if (player.score == 10) {
         //komentarz
 
         gameState = 'ended';
         computerResultElem.innerHTML = '';
         playerResultElem.innerHTML = '';
         alert('Winner');
-    } else if (computer.score == 3) {
+    } else if (computer.score == 10) {
         //komentarzem
         gameState = 'ended';
         computerResultElem.innerHTML = '';
