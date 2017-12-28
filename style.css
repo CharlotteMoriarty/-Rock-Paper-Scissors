@@ -1,4 +1,9 @@
-//body, container do zmiany przy implementacji 
+body{
+    background-image: url(http://weknowmemes.com/wp-content/uploads/2013/01/rock-paper-scissors-explained.jpg);
+    background-size: cover;
+    
+}
+
 .container{
     padding-bottom: 15px;
     padding-top: 20px;
