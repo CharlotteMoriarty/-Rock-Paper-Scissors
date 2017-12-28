@@ -1,7 +1,8 @@
 body{
     background-image: url('http://weknowmemes.com/wp-content/uploads/2013/01/rock-paper-scissors-explained.jpg');
     background-size: cover;
-    
+    max-height: 1950px;
+    weight: 100%;
 }
 
 .container{
